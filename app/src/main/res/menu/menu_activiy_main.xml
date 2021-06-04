@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_sach"
+            android:title="Danh sách sách"
+            android:icon="@drawable/book"/>
+        <item
+            android:id="@+id/nav_sv"
+            android:title="Danh sách sinh viên"
+            android:icon="@drawable/people"/>
+        <item
+            android:id="@+id/nav_quydinh"
+            android:title="Quy định"
+            android:icon="@drawable/quydinh"/>
+        <item
+            android:id="@+id/nav_info"
+            android:title="Thông tin"
+            android:icon="@drawable/file"/>
+        <item
+            android:id="@+id/nav_DoiMK"
+            android:title="Đổi mật khẩu"
+            android:icon="@drawable/password"/>
+        <item
+            android:id="@+id/nav_logout"
+            android:title="Đăng xuất"
+            android:icon="@drawable/logout"/>
+    </group>
+</menu>

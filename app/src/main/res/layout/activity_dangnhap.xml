@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imgAccount"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                />
+            <TextView
+                android:id="@+id/tvDangnhap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="ĐĂNG NHẬP"
+                android:textColor="@android:color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+            <EditText
+                android:paddingLeft="10dp"
+                android:id="@+id/etTenDN"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/custom_shape_edittext"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="Mã sinh viên"
+                android:inputType="textPersonName"
+                android:textSize="18sp" />
+
+            <EditText
+                android:paddingLeft="10dp"
+                android:id="@+id/etMatkhau"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Mật khẩu"
+                android:background="@drawable/custom_shape_edittext"
+                android:inputType="textPassword"
+                android:textSize="18sp" />
+            <Button
+                android:id="@+id/btnDangnhap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="#FBF199"
+                android:text="ĐĂNG NHẬP"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnDangky"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="Đã có tài khoản ? Đăng ký"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
