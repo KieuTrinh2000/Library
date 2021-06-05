@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="wrap_content">
 <ImageView
-    android:src="@drawable/quydinh"
-    android:layout_width="64dp"
-    android:layout_height="64dp"/>
+    android:id="@+id/logo"
+    android:src="@drawable/logo"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"/>
+    <View
+        android:layout_below="@+id/logo"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:background="#BFBABA"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
 
 </RelativeLayout>

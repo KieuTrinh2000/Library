@@ -6,16 +6,9 @@
     <ImageView
         android:layout_marginTop="120dp"
         android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="128dp"
-        android:layout_height="128dp"/>
-    <TextView
-        android:textColor="@android:color/background_dark"
-        android:layout_marginTop="10dp"
-        android:text="Library Manager"
-        android:textSize="18sp"
-        android:padding="10dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/logo"
+        android:scaleType="centerCrop"
+        android:layout_width="228dp"
+        android:layout_height="228dp"/>
+
 </LinearLayout>
