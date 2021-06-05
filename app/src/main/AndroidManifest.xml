@@ -4,12 +4,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/lgo"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/lgo"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".ThongtinActivity"></activity>
+        <activity android:name=".QuyDinhActivity" />
+        <activity android:name=".StudentActivity" />
+        <activity android:name=".DSSachActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DangKy" />
-        <activity android:name=".DangNhapActivity">
-
-        </activity>
+        <activity android:name=".DangNhapActivity" />
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -26,16 +27,8 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
-        toolbar=findViewById(R.id.toolbar);
-        c1=findViewById(R.id.c1);
-        c2=findViewById(R.id.c2);
-        c3=findViewById(R.id.c3);
-        c4=findViewById(R.id.c4);
-        c5=findViewById(R.id.c5);
-        c6=findViewById(R.id.c6);
+        getViews();
 
-        navigationView=findViewById(R.id.navigationview);
-        drawerLayout=findViewById(R.id.drawalelayout);
         toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.Open,R.string.Close);
         toggle.syncState();
         //
@@ -47,6 +40,7 @@ public class HomeActivity extends AppCompatActivity
                 drawerLayout.openDrawer(Gravity.START);
             }
         });
+
         c1.setOnClickListener(this::onClick);
         c2.setOnClickListener(this::onClick);
         c3.setOnClickListener(this::onClick);
@@ -58,7 +52,17 @@ public class HomeActivity extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_sach:
+                        startActivity(new Intent(HomeActivity.this,DSSachActivity.class));break;
                     case R.id.nav_sv:
+                        startActivity(new Intent(HomeActivity.this,StudentActivity.class));break;
+                    case R.id.nav_quydinh:
+                        startActivity(new Intent(HomeActivity.this,QuyDinhActivity.class));break;
+                    case R.id.nav_info:
+                        startActivity(new Intent(HomeActivity.this,ThongtinActivity.class));break;
+                    case R.id.nav_DoiMK:
+                        startActivity(new Intent(HomeActivity.this,DoiMatKhau.class));break;
+                    case R.id.nav_logout:
+                        startActivity(new Intent(HomeActivity.this,DangNhapActivity.class));break;
 
                 }
                 return  true;
@@ -67,15 +71,34 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
+    private void getViews() {
+        toolbar=findViewById(R.id.toolbar);
+        c1=findViewById(R.id.c1);
+        c2=findViewById(R.id.c2);
+        c3=findViewById(R.id.c3);
+        c4=findViewById(R.id.c4);
+        c5=findViewById(R.id.c5);
+        c6=findViewById(R.id.c6);
+
+        navigationView=findViewById(R.id.navigationview);
+        drawerLayout=findViewById(R.id.drawalelayout);
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.c1:
+                startActivity(new Intent(this,DSSachActivity.class));break;
             case R.id.c2:
+                startActivity(new Intent(this,StudentActivity.class));break;
             case R.id.c3:
+                startActivity(new Intent(this,QuyDinhActivity.class));break;
             case R.id.c4:
+                startActivity(new Intent(this,ThongtinActivity.class));break;
             case R.id.c5:
+                startActivity(new Intent(this,DoiMatKhau.class));break;
             case R.id.c6:
+                startActivity(new Intent(this,DangNhapActivity.class));break;
         }
     }
 }
