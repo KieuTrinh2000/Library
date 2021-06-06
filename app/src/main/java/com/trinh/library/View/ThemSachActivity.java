@@ -26,8 +26,8 @@ public class ThemSachActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sach);
         getViews();
-db=new DatabaseHelper(this);
-db.CreateTableDsSach();
+        db=new DatabaseHelper(this);
+        db.CreateTableDsSach();
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

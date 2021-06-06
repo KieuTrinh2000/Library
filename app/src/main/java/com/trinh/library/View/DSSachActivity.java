@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,14 +35,25 @@ public class DSSachActivity extends AppCompatActivity {
   ListView lv;
   FloatingActionButton floatingActionButton;
   public static CountDownTimer countDownTimer,countDownTimerXoa;
-  public  static  int pos=0;
+  public  static  int pos=0; //vi tri cua phan tu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ds_sach);
         getViews();
-
+        //toolbar
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Danh sách sách");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        db=new DatabaseHelper(this);
+        db.CreateTableDsSach();
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,24 +68,32 @@ public class DSSachActivity extends AppCompatActivity {
         list=db.getDataListSach();
         adapter=new DsSachAdapter(DSSachActivity.this,list);
         lv.setAdapter(adapter);
+
+//        //Chi tiết sách
+//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                AlertDialog.Builder builder=new AlertDialog.Builder(DSSachActivity.this);
+//                builder.setTitle("Chi tiết sách");
+//                builder.setIcon(R.drawable.book);
+//                builder.setMessage(list.get(position).toString());
+//                builder.setNegativeButton("Thoát", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        AlertDialog alertDialog=builder.create();
+//                        alertDialog.cancel();
+//                    }
+//                });
+//                builder.show();
+//            }
+//        });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(DSSachActivity.this);
-                builder.setTitle("Chi tiết sách");
-                builder.setIcon(R.drawable.book);
-                builder.setMessage(list.get(position).toString());
-                builder.setNegativeButton("Thoát", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        AlertDialog alertDialog=builder.create();
-                        alertDialog.cancel();
-                    }
-                });
-                builder.show();
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                DialogChiTiet(list.get(i).getMaS(),list.get(i).getTenS(),list.get(i).getTenTG(),list.get(i).getViTri(),
+                        list.get(i).getSl(),list.get(i).getNamxb(),list.get(i).getTinhtrang());
             }
-        });
-        // khi ng dung ấn vào 2 biêt ruong xoa + syua
+        });        // khi ng dung ấn vào 2 biêt ruong xoa + syua
         countDownTimer=new CountDownTimer(10,10) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -88,6 +108,8 @@ public class DSSachActivity extends AppCompatActivity {
                          list.get(pos).getTinhtrang());
             }
         };
+
+        //Xóa
         countDownTimerXoa=new CountDownTimer(10,10) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -98,6 +120,8 @@ public class DSSachActivity extends AppCompatActivity {
             public void onFinish() {
               AlertDialog.Builder builder =new AlertDialog.Builder(DSSachActivity.this);
               builder.setMessage("Bạn có chắc muốn xoá không !");
+               AlertDialog alertDialog=builder.create();// ko cho phép ấn ngoài màn hinbhf để tắt màn hình dialog
+                alertDialog.setCanceledOnTouchOutside(false);
               builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
@@ -109,8 +133,6 @@ public class DSSachActivity extends AppCompatActivity {
                       }else{
                           Toast.makeText(DSSachActivity.this, "Xoa thât bại", Toast.LENGTH_SHORT).show();
                       }
-
-
                   }
               });
               builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -124,6 +146,7 @@ public class DSSachActivity extends AppCompatActivity {
         };
     }
 
+    //Dialog Edit
     private void DiaLogUpdateAnDelete(String maS, String tenS, String tenTG, String viTri, int sl, String namxb, String tinhtrang) {
 
         Dialog dialog=new Dialog(DSSachActivity.this);
@@ -138,9 +161,9 @@ public class DSSachActivity extends AppCompatActivity {
         EditText  etNamxb =  dialog.findViewById(R.id.etNamXB);
         EditText  etTinhTrang =dialog. findViewById(R.id.etTinhtrang);
         ImageView close =dialog. findViewById(R.id.close);
-
         Button btnSua = dialog.findViewById(R.id.btnSua);
         Button  btnHuy = dialog. findViewById(R.id.btnHuy);
+
         etMaSach.setText(maS);
         etTenS.setText(tenS);
         etTenTG.setText(tenTG);
@@ -150,8 +173,8 @@ public class DSSachActivity extends AppCompatActivity {
         etTinhTrang.setText(tinhtrang);
 
 
-
-btnSua.setOnClickListener(new View.OnClickListener() {
+    //Sửa
+    btnSua.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         String MaS = etMaSach.getText().toString().trim();
@@ -177,6 +200,7 @@ btnSua.setOnClickListener(new View.OnClickListener() {
         } 
     }
 });
+    //Hủy edit
 btnHuy.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -189,7 +213,7 @@ btnHuy.setOnClickListener(new View.OnClickListener() {
         etTinhTrang.setText("");
     }
 });
-// đóng
+// đóng edit
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,6 +221,49 @@ btnHuy.setOnClickListener(new View.OnClickListener() {
             }
         });
        
+    }
+
+    //thông tin sách
+    private void DialogChiTiet(String maS, String tenS, String tenTG, String viTri, int sl, String namxb, String tinhtrang){
+        Dialog dialog=new Dialog(DSSachActivity.this);
+        dialog.setContentView(R.layout.dialog_chi_tiet_sach);
+        dialog.show();
+        dialog.setCanceledOnTouchOutside(false);// ko cho phép ấn ngoài màn hinbhf để tắt màn hình dialog
+        TextView etMaSach = dialog. findViewById(R.id.tvMaS2);
+        TextView   etTenTG = dialog.findViewById(R.id.tvTacGia2);
+        TextView  etViTri = dialog.findViewById(R.id.tvViTri2);
+        TextView  etSoLuong = dialog.findViewById(R.id.tvSoLuong2);
+        TextView  etTenS =  dialog.findViewById(R.id.tvTenS2);
+        TextView  etNamxb =  dialog.findViewById(R.id.tvNamXB2);
+        TextView  etTinhTrang =dialog. findViewById(R.id.tvTinhTrang2);
+        ImageView closeSach =dialog. findViewById(R.id.closeSach);
+        Button btnThoat = dialog.findViewById(R.id.btnThoat);
+
+
+        btnThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+
+        etMaSach.setText(maS);
+        etTenS.setText(tenS);
+        etTenTG.setText(tenTG);
+        etViTri.setText(viTri);
+        etSoLuong.setText(sl+"");
+        etNamxb.setText(namxb);
+        etTinhTrang.setText(tinhtrang);
+
+        // đóng thong tin sach
+        closeSach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
     }
 
     private void getViews() {

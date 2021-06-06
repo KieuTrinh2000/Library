@@ -57,6 +57,7 @@ public class DsSachAdapter extends BaseAdapter {
         }
         viewHolder.txtTen.setText(listSach.get(position).getTenS());
         viewHolder.txtMa.setText(listSach.get(position).getMaS());
+
         viewHolder.imgDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
