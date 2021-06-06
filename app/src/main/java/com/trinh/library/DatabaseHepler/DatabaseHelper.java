@@ -1,11 +1,16 @@
-package com.trinh.library;
+package com.trinh.library.DatabaseHepler;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import com.trinh.library.Model.SachModel;
+
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private SQLiteDatabase sqLiteDatabase;
@@ -77,6 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public  boolean doimatkhau(String MaSV, String NewPassword){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("update user set PassWord = ? where MaSV=?", new String[]{NewPassword,MaSV});
+
         Cursor cursor = db.rawQuery("Select * from user where MaSV=? and PassWord = ?", new String[]{MaSV,NewPassword});
         if (cursor.getCount()>0) return true;
         else return false;
@@ -87,6 +93,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("Select * from DsSach where MaS=?", new String[]{MaS});
         if (cursor.getCount()>0) return true;
         else return false;
+    }
+
+    //Them thông tin sách
+    // insert db user
+    public Boolean insertSach(String MaS,String TenS, String TacGia, String Vitri, String Soluong, String NamXb, String Tinhtrang){
+        String SQL="INSERT INTO DsSach(MaS,TenS,TacGia,Vitri,Soluong,NamXb,Tinhtrang) " +
+                "values('"+MaS+"','"+TenS+"','"+TacGia+"','"+Vitri+"','"+Soluong+"','"+NamXb+"','"+Tinhtrang+"')";
+        try{
+            sqLiteDatabase.execSQL(SQL);
+            return true;
+        }catch (Exception e){
+
+        }
+        return  false;
+    }
+
+    //getDataSach
+    public ArrayList<SachModel> getDataListSach(){
+        getReadableDatabase();
+        String sQL="SELECT * FROM DsSach";
+        Cursor cursor=sqLiteDatabase.rawQuery(sQL,null);
+        ArrayList<SachModel> arrayList=new ArrayList<>();
+        while (cursor.moveToNext()){
+            arrayList.add(new SachModel(cursor.getString(0),
+                    cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4),
+                    cursor.getString(5),cursor.getString(6)));
+        }
+        return  arrayList;
+    }
+
+    //Update Sach
+    public boolean upDateSach(String MaS,String TenS, String TacGia, String Vitri, String Soluong, String NamXb, String Tinhtrang){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE DsSach SET TenS=?,TacGia=?,Vitri=?,Soluong=?,NamXb=?,Tinhtrang=? WHERE MaS =?", new String[]{TenS,TacGia,Vitri,Soluong,NamXb,Tinhtrang,MaS});
+        Cursor cursor = db.rawQuery("Select * from DsSach where MaS=?", new String[]{MaS});
+        if (cursor.getCount()>0) return true;
+        else return false;
+    }
+    //Delete Sach
+    public boolean DeleteSach(String MaS){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM DsSach WHERE MaS =?", new String[]{MaS});
+        Cursor cursor = db.rawQuery("Select * from DsSach where MaS=?", new String[]{MaS});
+        if (cursor.getCount()>0) return false;
+        else return true;
     }
 }
 

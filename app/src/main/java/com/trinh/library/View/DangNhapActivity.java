@@ -1,4 +1,4 @@
-package com.trinh.library;
+package com.trinh.library.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.trinh.library.DatabaseHepler.DatabaseHelper;
+import com.trinh.library.R;
+import com.trinh.library.Config.ShareConFig;
+
 public class DangNhapActivity extends AppCompatActivity {
 
     EditText etTenDN, etMatkhau;
@@ -20,6 +24,7 @@ public class DangNhapActivity extends AppCompatActivity {
     private DatabaseHelper db;
 
     public static final String etAddMasv = "masinhvien";
+    private ShareConFig shareConFig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +33,12 @@ public class DangNhapActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);// khoi tao ham helper
         db.CreateTableUser();// tao dang user
         getViews();
+        shareConFig=new ShareConFig(this);// lớp khởi tạo của sharefre
         btnDangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(DangNhapActivity.this, DangKy.class);
+                Intent intent = new Intent(DangNhapActivity.this, DangKyActivity.class);
                 startActivity(intent);
             }
         });
@@ -61,6 +67,7 @@ public class DangNhapActivity extends AppCompatActivity {
         } else {
             Boolean check = db.checkLogin(MaSV, Matkhau);
             if (check == true) {
+                shareConFig.PutTaiKhoan(MaSV);// khi đăng bnhaapj thành công sẽ lưu thông tin tài khoản
                 Toast.makeText(getApplicationContext(), "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(DangNhapActivity.this, HomeActivity.class);
                 intent.putExtra(etAddMasv, MaSV);

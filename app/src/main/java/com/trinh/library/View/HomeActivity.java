@@ -1,4 +1,4 @@
-package com.trinh.library;
+package com.trinh.library.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.trinh.library.R;
 
 public class HomeActivity extends AppCompatActivity
  implements View.OnClickListener {
@@ -33,7 +35,7 @@ public class HomeActivity extends AppCompatActivity
         toggle.syncState();
         //
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Library Manager");
+        getSupportActionBar().setTitle("Library");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,17 +54,18 @@ public class HomeActivity extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_sach:
-                        startActivity(new Intent(HomeActivity.this,DSSachActivity.class));break;
+                        startActivity(new Intent(HomeActivity.this, DSSachActivity.class));break;
                     case R.id.nav_sv:
-                        startActivity(new Intent(HomeActivity.this,StudentActivity.class));break;
+                        startActivity(new Intent(HomeActivity.this, StudentActivity.class));break;
                     case R.id.nav_quydinh:
-                        startActivity(new Intent(HomeActivity.this,QuyDinhActivity.class));break;
+                        startActivity(new Intent(HomeActivity.this, QuyDinhActivity.class));break;
                     case R.id.nav_info:
-                        startActivity(new Intent(HomeActivity.this,ThongtinActivity.class));break;
+                        startActivity(new Intent(HomeActivity.this, ThongtinActivity.class));break;
                     case R.id.nav_DoiMK:
-                        startActivity(new Intent(HomeActivity.this,DoiMatKhau.class));break;
+                        startActivity(new Intent(HomeActivity.this, DoiMatKhauActivity.class));break;
                     case R.id.nav_logout:
-                        startActivity(new Intent(HomeActivity.this,DangNhapActivity.class));break;
+                        startActivity(new Intent(HomeActivity.this, DangNhapActivity.class));
+                    Toast.makeText(HomeActivity.this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();break;
 
                 }
                 return  true;
@@ -96,9 +99,10 @@ public class HomeActivity extends AppCompatActivity
             case R.id.c4:
                 startActivity(new Intent(this,ThongtinActivity.class));break;
             case R.id.c5:
-                startActivity(new Intent(this,DoiMatKhau.class));break;
+                startActivity(new Intent(this, DoiMatKhauActivity.class));break;
             case R.id.c6:
-                startActivity(new Intent(this,DangNhapActivity.class));break;
+                startActivity(new Intent(this,DangNhapActivity.class));
+                Toast.makeText(this, "Đã đăng xuất", Toast.LENGTH_SHORT).show();break;
         }
     }
 }

@@ -9,20 +9,26 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThongtinActivity"></activity>
-        <activity android:name=".QuyDinhActivity" />
-        <activity android:name=".StudentActivity" />
-        <activity android:name=".DSSachActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".View.ThemSachActivity"></activity>
+        <activity android:name=".View.ThongtinActivity" />
+        <activity android:name=".View.QuyDinhActivity" />
+        <activity android:name=".View.StudentActivity" />
+        <activity android:name=".View.DSSachActivity" />
+        <activity android:name=".View.HomeActivity" />
+        <activity android:name=".View.DoiMatKhauActivity" />
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DangKy" />
-        <activity android:name=".DangNhapActivity" />
+        <activity android:name=".View.DangKyActivity" />
+        <activity android:name=".View.DangNhapActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -1,10 +1,12 @@
-package com.trinh.library;
+package com.trinh.library.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.trinh.library.R;
 
 public class MainActivity extends AppCompatActivity {
 

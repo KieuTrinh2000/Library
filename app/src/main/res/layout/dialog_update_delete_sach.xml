@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="360dp"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/close"
+                android:src="@drawable/ic_baseline_close_24"
+                android:layout_gravity="end"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+          <TextView
+
+              android:textStyle="bold"
+              android:textSize="18sp"
+              android:textColor="@android:color/background_dark"
+              android:fontFamily="@font/abeezee"
+              android:padding="10dp"
+              android:text="Cập Nhật Thông Tin"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+
+
+            <EditText
+                android:id="@+id/etMasach"
+                android:background="@drawable/custom_shape_edittext"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Mã sách"
+                android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/ettensach"
+                android:background="@drawable/custom_shape_edittext"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Tên sách"
+                android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/etTenTG"
+                android:background="@drawable/custom_shape_edittext"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Tên tác giả"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etVitri"
+                android:background="@drawable/custom_shape_edittext"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Vị trí"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etSoluong"
+                android:background="@drawable/custom_shape_edittext"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Số lượng"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etNamXB"
+                android:background="@drawable/custom_shape_edittext"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Năm xuất bản"
+                android:inputType="date" />
+
+            <EditText
+
+                android:id="@+id/etTinhtrang"
+                android:background="@drawable/custom_shape_edittext"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Tình trạng"
+                android:inputType="textPersonName" />
+
+            <LinearLayout
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btnSua"
+                    android:text="Sửa"
+
+                    android:background="#FBF199"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"/>
+                <Button
+                    android:id="@+id/btnHuy"
+                    android:text="Huỷ"
+                    android:layout_marginLeft="45dp"
+                    android:background="#FBF199"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

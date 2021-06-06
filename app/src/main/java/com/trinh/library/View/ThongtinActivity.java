@@ -1,14 +1,16 @@
-package com.trinh.library;
+package com.trinh.library.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DSSachActivity extends AppCompatActivity {
+import com.trinh.library.R;
+
+public class ThongtinActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ds_sach);
+        setContentView(R.layout.activity_thongtin);
     }
 }

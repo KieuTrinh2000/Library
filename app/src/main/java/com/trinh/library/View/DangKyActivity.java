@@ -1,4 +1,4 @@
-package com.trinh.library;
+package com.trinh.library.View;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DangKy extends AppCompatActivity {
+import com.trinh.library.DatabaseHepler.DatabaseHelper;
+import com.trinh.library.R;
+
+public class DangKyActivity extends AppCompatActivity {
 
     EditText etTenDN, etMatkhau, etXacnhan;
     TextView tvDangky;
@@ -26,7 +29,7 @@ public class DangKy extends AppCompatActivity {
         btnDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DangKy.this, DangNhapActivity.class);
+                Intent intent = new Intent(DangKyActivity.this, DangNhapActivity.class);
                 startActivity(intent);
             }
         });
@@ -61,7 +64,7 @@ public class DangKy extends AppCompatActivity {
                     Boolean insert = db.insertTK(MaSV,Matkhau);
                     if (insert == true){
                         Toast.makeText(getApplicationContext(), "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DangKy.this, DangNhapActivity.class);
+                        Intent intent = new Intent(DangKyActivity.this, DangNhapActivity.class);
                         startActivity(intent);
                     }
                 }
