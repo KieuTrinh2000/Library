@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity
                     case R.id.nav_sach:
                         startActivity(new Intent(HomeActivity.this, DSSachActivity.class));break;
                     case R.id.nav_sv:
-                        startActivity(new Intent(HomeActivity.this, StudentActivity.class));break;
+                        startActivity(new Intent(HomeActivity.this, DSNguoiMuonActivity.class));break;
                     case R.id.nav_quydinh:
                         startActivity(new Intent(HomeActivity.this, QuyDinhActivity.class));break;
                     case R.id.nav_info:
@@ -93,7 +93,7 @@ public class HomeActivity extends AppCompatActivity
             case R.id.c1:
                 startActivity(new Intent(this,DSSachActivity.class));break;
             case R.id.c2:
-                startActivity(new Intent(this,StudentActivity.class));break;
+                startActivity(new Intent(this,DSNguoiMuonActivity.class));break;
             case R.id.c3:
                 startActivity(new Intent(this,QuyDinhActivity.class));break;
             case R.id.c4:

@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/imgSach"
-            android:layout_width="160dp"
-            android:layout_height="111dp"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
            android:layout_gravity="center"
             android:layout_marginTop="15dp"
            android:src="@drawable/book2" />

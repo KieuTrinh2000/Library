@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -12,10 +12,8 @@
         android:layout_height="wrap_content">
 
     </androidx.appcompat.widget.Toolbar>
-
-
     <ListView
-        android:id="@+id/lvSach"
+        android:id="@+id/lvNguoiMuon"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -27,7 +25,7 @@
         android:layout_gravity="end|bottom">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_Sach"
+            android:id="@+id/add_Nguoi_Muon"
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_margin="6dp"
@@ -35,4 +33,5 @@
 
             />
     </RelativeLayout>
+
 </LinearLayout>

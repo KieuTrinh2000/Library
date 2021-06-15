@@ -9,13 +9,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.Spannable;
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,13 +89,17 @@ public class DSSachActivity extends AppCompatActivity {
 //                builder.show();
 //            }
 //        });
+
+        //hien thong tin sach
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 DialogChiTiet(list.get(i).getMaS(),list.get(i).getTenS(),list.get(i).getTenTG(),list.get(i).getViTri(),
                         list.get(i).getSl(),list.get(i).getNamxb(),list.get(i).getTinhtrang());
             }
-        });        // khi ng dung ấn vào 2 biêt ruong xoa + syua
+        });
+
+        // khi ng dung ấn vào 2 button xoa + syua
         countDownTimer=new CountDownTimer(10,10) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -264,6 +270,31 @@ btnHuy.setOnClickListener(new View.OnClickListener() {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search,menu);
+
+        SearchView searchView = (SearchView) menu.findItem(R.id.menuSearch).getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                 list= db.getDataListSach();
+                Log.d("TAG", "showsss: "+list);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                list.clear();
+                list = db.Timkiemsach(list,s);
+                adapter.notifyDataSetChanged();
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void getViews() {
