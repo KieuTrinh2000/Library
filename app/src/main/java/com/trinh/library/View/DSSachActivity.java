@@ -54,6 +54,7 @@ public class DSSachActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         db=new DatabaseHelper(this);
         db.CreateTableDsSach();
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +100,7 @@ public class DSSachActivity extends AppCompatActivity {
             }
         });
 
-        // khi ng dung ấn vào 2 button xoa + syua
+        // khi ng dung ấn vào 2 button xoa + sua
         countDownTimer=new CountDownTimer(10,10) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -302,6 +303,12 @@ btnHuy.setOnClickListener(new View.OnClickListener() {
         floatingActionButton=findViewById(R.id.add_Sach);
         lv = findViewById(R.id.lvSach);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+       Intent intent = new Intent(this, HomeActivity.class);
+       startActivity(intent);
     }
 
 }

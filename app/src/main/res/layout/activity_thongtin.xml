@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".View.ThongtinActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,4 +15,31 @@
         android:layout_height="wrap_content">
 
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"
+        android:fontFamily="@font/abeezee"
+        android:textColor="@android:color/background_dark"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:text="Phần mềm quản lý mượn trả sách trong thư viện"/>
+
+    <TextView
+        android:id="@+id/txtnoidung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/abeezee"
+        android:textColor="@android:color/background_dark"
+        android:padding="20dp"
+
+        />
+
 </LinearLayout>

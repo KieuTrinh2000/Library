@@ -5,11 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.trinh.library.R;
 
 public class ThongtinActivity extends AppCompatActivity {
     Toolbar toolbar;
+    TextView txtnoidung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,7 @@ public class ThongtinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_thongtin);
 
         toolbar=findViewById(R.id.toolbar);
+        txtnoidung=findViewById(R.id.txtnoidung);
         //toolbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Thông tin");
@@ -27,5 +30,9 @@ public class ThongtinActivity extends AppCompatActivity {
                 finish();
             }
         });
-    } 
+        String noidung="Sinh viên thực hiện: \n 1. Kiều Việt Trinh - 1810A02 \n" +
+                " 2. Nguyễn Thị Duyên - 1810A01 \n\n" +
+                "Giảng viên hướng dẫn: Mai Thị Thúy Hà";
+        txtnoidung.setText(noidung);
+    }
 }

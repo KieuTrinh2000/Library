@@ -3,11 +3,11 @@
     android:orientation="vertical" android:layout_width="360dp"
     android:layout_height="match_parent">
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="360dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/close"
@@ -29,7 +29,18 @@
                 android:layout_height="wrap_content"/>
 
 
-
+            <EditText
+                android:id="@+id/etEditMaNM"
+                android:background="@drawable/custom_shape_edittext"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Mã SV"
+                android:inputType="textPersonName" />
             <EditText
                 android:id="@+id/etEditTenNM"
                 android:background="@drawable/custom_shape_edittext"

@@ -86,4 +86,9 @@ public class ThemSachActivity extends AppCompatActivity {
         btnHuy =  findViewById(R.id.btnHuy);
         imgSach= findViewById(R.id.imgSach);
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

@@ -9,9 +9,10 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.ThemSachActivity"></activity>
+        <activity android:name=".View.ThemNguoiMuonActivity"></activity>
+        <activity android:name=".View.ThemSachActivity" />
         <activity android:name=".View.ThongtinActivity" />
-        <activity android:name=".View.DSNguoiMuonActivity"/>
+        <activity android:name=".View.DSNguoiMuonActivity" />
         <activity android:name=".View.QuyDinhActivity" />
         <activity android:name=".View.DSSachActivity" />
         <activity android:name=".View.HomeActivity" />

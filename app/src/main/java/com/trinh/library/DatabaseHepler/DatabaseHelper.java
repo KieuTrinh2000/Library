@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.trinh.library.Model.DSNguoiMuon;
 import com.trinh.library.Model.SachModel;
 
 import java.util.ArrayList;
@@ -73,14 +74,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Boolean checkLogin(String MaSV, String pass) {
         sqLiteDatabase = getReadableDatabase();// docjd bangr ghi
         Cursor cursor = sqLiteDatabase.rawQuery("Select * from user where MaSV=? and password=?", new String[]{MaSV, pass});
-        if (cursor.getCount() > 0) return true;
-        else return false;
-    }
-
-    //Check MaSV
-    public boolean CheckMaSinhVien(String MaSV) {
-        sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("Select * from DsNguoiMuon where MaSV=?", new String[]{MaSV});
         if (cursor.getCount() > 0) return true;
         else return false;
     }
@@ -167,6 +160,73 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return dsSach;
     }
+
+    //get dataNguoiMuon
+    public ArrayList<DSNguoiMuon> getDataNM() {
+        sqLiteDatabase = this.getReadableDatabase();
+        String sQL = "SELECT * FROM DsNguoiMuon";
+        Cursor cursor = sqLiteDatabase.rawQuery(sQL, null);
+        ArrayList<DSNguoiMuon> arrayList = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            arrayList.add(new DSNguoiMuon(cursor.getString(0),
+                    cursor.getString(1), cursor.getString(2), cursor.getString(3)
+            ));
+        }
+        return arrayList;
+    }
+
+    //Check MaSV
+    public boolean CheckMaSinhVien(String MaSV){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from DsNguoiMuon where MaSV=?", new String[]{MaSV});
+        if (cursor.getCount()>0) return true;
+        else return false;
+    }
+
+    //Them SV
+    public Boolean insertNguoiMuon(String MaSV,String TenSV, String Lop, String Sdt) {
+        String SQL = "INSERT INTO DsNguoiMuon(MaSV,TenSV,Lop,Sdt) " +
+                "values('" + MaSV + "','" + TenSV + "','" + Lop + "','" + Sdt + "')";
+        try {
+            sqLiteDatabase.execSQL(SQL);
+            return true;
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+    //Update SV
+    public boolean upDateSV(String MaSV,String TenSV, String Lop, String Sdt){
+        sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("UPDATE DsNguoiMuon SET TenSV=?,Lop=?,Sdt=? WHERE MaSV =?", new String[]{TenSV,Lop,Sdt,MaSV});
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * from DsNguoiMuon where MaSV=?", new String[]{MaSV});
+        if (cursor.getCount()>0) return true;
+        else return false;
+    }
+    //Delete Sinh Viên
+    public boolean DeleteSV(String MaSV){
+        sqLiteDatabase  = this.getWritableDatabase();
+        sqLiteDatabase.execSQL("DELETE FROM DsNguoiMuon WHERE MaSV =?", new String[]{MaSV});
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * from DsNguoiMuon where MaSV=?", new String[]{MaSV});
+        if (cursor.getCount()>0) return false;
+        else return true;
+    }
+
+    // Tìm kiếm sv
+    public ArrayList TimkiemNguoiMuon(ArrayList<DSNguoiMuon> dsNguoiMuon, String s) {
+        sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * from DsNguoiMuon where TenSV LIKE " + "'" + "%" + s + "%" + "'", null);
+        while (cursor.moveToNext()) {
+            String MaSV = cursor.getString(0);
+            String TenSV = cursor.getString(1);
+            String Lop = cursor.getString(2);
+            String Sdt = cursor.getString(3);
+
+            dsNguoiMuon.add(new DSNguoiMuon(MaSV, TenSV, Lop,Sdt));
+        }
+        return dsNguoiMuon;
+    }
+
 }
 
 
