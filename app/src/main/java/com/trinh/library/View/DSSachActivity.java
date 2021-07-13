@@ -109,7 +109,7 @@ public class DSSachActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                 DiaLogUpdateAnDelete(list.get(pos).getMaS(),
+                DiaLogEdit(list.get(pos).getMaS(),
                          list.get(pos).getTenS(),list.get(pos).getTenTG(),
                          list.get(pos).getViTri(),list.get(pos).getSl(),list.get(pos).getNamxb(),
                          list.get(pos).getTinhtrang());
@@ -154,7 +154,7 @@ public class DSSachActivity extends AppCompatActivity {
     }
 
     //Dialog Edit
-    private void DiaLogUpdateAnDelete(String maS, String tenS, String tenTG, String viTri, int sl, String namxb, String tinhtrang) {
+    private void DiaLogEdit(String maS, String tenS, String tenTG, String viTri, int sl, String namxb, String tinhtrang) {
 
         Dialog dialog=new Dialog(DSSachActivity.this);
         dialog.setContentView(R.layout.dialog_update_delete_sach);
@@ -273,6 +273,8 @@ btnHuy.setOnClickListener(new View.OnClickListener() {
 
     }
 
+
+    //Tìm kiếm
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search,menu);

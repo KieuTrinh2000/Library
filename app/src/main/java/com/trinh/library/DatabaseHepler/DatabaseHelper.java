@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, "Libary.db", null, 1);
-        sqLiteDatabase = getWritableDatabase();// dung để ghi vào database
+        sqLiteDatabase = getWritableDatabase();// //khoi tao sqlitedb - mo csdl ra de doc ghi
     }
 
     @Override
@@ -65,7 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Check MaSV
     public boolean CheckMaSV(String MaSV) {
-        sqLiteDatabase = this.getReadableDatabase();
+        sqLiteDatabase = this.getReadableDatabase();//mo csdl ra de doc
         Cursor cursor = sqLiteDatabase.rawQuery("Select * from user where MaSV=?", new String[]{MaSV});
         if (cursor.getCount() > 0) return false;
         else return true;

@@ -17,8 +17,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.trinh.library.R;
 
-public class HomeActivity extends AppCompatActivity
- implements View.OnClickListener {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;

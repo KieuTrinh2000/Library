@@ -115,7 +115,7 @@ public class DSNguoiMuonActivity extends AppCompatActivity {
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        boolean check =db.DeleteSach(arrayDsNguoimuon.get(pos).getMaSv());
+                        boolean check =db.DeleteSV(arrayDsNguoimuon.get(pos).getMaSv());
                         if(check){
                             arrayDsNguoimuon.remove(pos);
                             nguoiMuonAdapter.notifyDataSetChanged();
@@ -208,6 +208,7 @@ public class DSNguoiMuonActivity extends AppCompatActivity {
         TextView   etTenSV = dialog.findViewById(R.id.tvTenSV2);
         TextView  etLop = dialog.findViewById(R.id.tvLop2);
         TextView  etSdt = dialog.findViewById(R.id.tvSDT2);
+        ImageView close =dialog. findViewById(R.id.close);
         Button btnThoat = dialog.findViewById(R.id.btnThoat);
 
         btnThoat.setOnClickListener(new View.OnClickListener() {
@@ -222,6 +223,14 @@ public class DSNguoiMuonActivity extends AppCompatActivity {
         etTenSV.setText(tenSv);
         etLop.setText(lop);
         etSdt.setText(sdt);
+
+        // đóng thong tin sv
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
 
     }
 

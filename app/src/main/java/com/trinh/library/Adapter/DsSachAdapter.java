@@ -54,7 +54,8 @@ public class DsSachAdapter extends BaseAdapter {
         }
         else{
             viewHolder= (ViewHolder) convertView.getTag();
-        }
+        }//thiet lap gia tri hien thi len cac doi tuong view
+        //lay ra doi tuong contact tai vi tri position trong lsContact
         viewHolder.txtTen.setText(listSach.get(position).getTenS());
         viewHolder.txtMa.setText(listSach.get(position).getMaS());
 
@@ -79,9 +80,6 @@ public class DsSachAdapter extends BaseAdapter {
     public class ViewHolder{
         TextView txtMa,txtTen;
         ImageView imgEdit,imgDel;
-
-
-
     }
 
 }
