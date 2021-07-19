@@ -44,6 +44,7 @@
                        android:layout_width="70dp"
                        android:layout_height="70dp"/>
                    <TextView
+                       android:textColor="#1E1E1E"
                        android:id="@+id/list_class"
                        android:textSize="14sp"
                        android:padding="8dp"
@@ -77,6 +78,7 @@
                        android:layout_width="70dp"
                        android:layout_height="70dp"/>
                    <TextView
+                       android:textColor="#1E1E1E"
                        android:id="@+id/list_student"
                        android:textSize="14sp"
                        android:padding="8dp"
@@ -110,6 +112,7 @@
                        android:layout_width="70dp"
                        android:layout_height="70dp"/>
                    <TextView
+                       android:textColor="#1E1E1E"
                        android:id="@+id/txtQD"
                        android:textSize="14sp"
                        android:padding="8dp"
@@ -143,6 +146,7 @@
                        android:layout_width="70dp"
                        android:layout_height="70dp"/>
                    <TextView
+                       android:textColor="#1E1E1E"
                        android:id="@+id/txtthongtin"
                        android:textSize="14sp"
                        android:padding="8dp"
@@ -176,7 +180,7 @@
                        android:layout_width="70dp"
                        android:layout_height="70dp"/>
                    <TextView
-
+                       android:textColor="#1E1E1E"
                        android:id="@+id/txtDoiMK"
                        android:textSize="14sp"
                        android:padding="8dp"
@@ -210,6 +214,7 @@
                        android:layout_width="70dp"
                        android:layout_height="70dp"/>
                    <TextView
+                       android:textColor="#1E1E1E"
                        android:id="@+id/txtExit"
                        android:textSize="14sp"
                        android:padding="8dp"

@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // insert db user
-    public Boolean insertTK(String MaSV, String pass) {
+    public boolean insertTK(String MaSV, String pass) {
         String SQL = "INSERT INTO user(MaSV,password) values('" + MaSV + "','" + pass + "')";
         try {
             sqLiteDatabase.execSQL(SQL);
@@ -71,23 +71,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else return true;
     }
 
-    public Boolean checkLogin(String MaSV, String pass) {
+    public boolean checkLogin(String MaSV, String pass) {
         sqLiteDatabase = getReadableDatabase();// docjd bangr ghi
         Cursor cursor = sqLiteDatabase.rawQuery("Select * from user where MaSV=? and password=?", new String[]{MaSV, pass});
         if (cursor.getCount() > 0) return true;
         else return false;
     }
-
-    //doimatkhau
-    public boolean doimatkhau(String MaSV, String NewPassword) {
-        sqLiteDatabase = this.getWritableDatabase();
-        sqLiteDatabase.execSQL("update user set PassWord = ? where MaSV=?", new String[]{NewPassword, MaSV});
-
-        Cursor cursor = sqLiteDatabase.rawQuery("Select * from user where MaSV=? and PassWord = ?", new String[]{MaSV, NewPassword});
+    public boolean checkQuenMK(String MaSV) {
+        sqLiteDatabase = getReadableDatabase();// docjd bangr ghi
+        Cursor cursor = sqLiteDatabase.rawQuery("Select * from user where MaSV=? ", new String[]{MaSV});
         if (cursor.getCount() > 0) return true;
         else return false;
     }
 
+//    //doimatkhau
+//    public boolean doimatkhau(String MaSV, String NewPassword) {
+//        sqLiteDatabase = this.getWritableDatabase();
+//        sqLiteDatabase.execSQL("update user set PassWord = ? where MaSV=?", new String[]{NewPassword, MaSV});
+//
+//        Cursor cursor = sqLiteDatabase.rawQuery("Select * from user where MaSV=? and PassWord = ?", new String[]{MaSV, NewPassword});
+//        if (cursor.getCount() > 0) return true;
+//        else return false;
+//    }
+
+    //doimatkhau
+    public boolean doimatkhau(String MaSV, String NewPassword,String passold) {
+        Boolean masv = checkLogin(MaSV,passold);
+        sqLiteDatabase = this.getWritableDatabase();
+        if(masv){
+            String SQL="UPDATE user set PassWord='"+NewPassword+"' WHERE MaSV='"+MaSV+"'";
+            sqLiteDatabase.execSQL(SQL);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean quenmatkhau(String MaSV, String NewPassword){
+        Boolean masv = checkQuenMK(MaSV);
+        sqLiteDatabase = this.getWritableDatabase();
+        if(masv){
+            String SQL="UPDATE user set PassWord='"+NewPassword+"' WHERE MaSV='"+MaSV+"'";
+            sqLiteDatabase.execSQL(SQL);
+            return true;
+        }
+        return false;
+    }
     //check Sach
     public boolean CheckSach(String MaS) {
         sqLiteDatabase = this.getReadableDatabase();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -42,32 +43,40 @@
             android:hint="Mã sinh viên"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:background="@drawable/custom_shape_edittext"
-            android:id="@+id/etMatkhau"
-            android:paddingLeft="10dp"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="Mật khẩu"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:paddingLeft="10dp"
-            android:background="@drawable/custom_shape_edittext"
-            android:id="@+id/etXacnhan"
+            app:passwordToggleEnabled="true"
+            android:layout_height="wrap_content">
+            <EditText
+                android:background="@drawable/custom_shape_edittext"
+                android:id="@+id/etMatkhau"
+                android:paddingLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:hint="Xác nhận"
-            android:inputType="textPassword" />
-
+            app:passwordToggleEnabled="true"
+            android:layout_height="wrap_content">
+            <EditText
+                android:paddingLeft="10dp"
+                android:background="@drawable/custom_shape_edittext"
+                android:id="@+id/etXacnhan"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Xác nhận"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/btnDangky"
             android:layout_width="match_parent"

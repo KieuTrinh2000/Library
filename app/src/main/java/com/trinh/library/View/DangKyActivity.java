@@ -54,27 +54,32 @@ public class DangKyActivity extends AppCompatActivity {
         String MaSV = etTenDN.getText().toString().trim();
         String Matkhau = etMatkhau.getText().toString().trim();
         String Xacnhan = etXacnhan.getText().toString().trim();
-        if (MaSV.equals("")||Matkhau.equals("")||Xacnhan.equals("")){
-            Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            if(Matkhau.equals(Xacnhan)){
-                Boolean checkMaSV = db.CheckMaSV(MaSV);
-                if (checkMaSV == true){
-                    Boolean insert = db.insertTK(MaSV,Matkhau);
-                    if (insert == true){
-                        Toast.makeText(getApplicationContext(), "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DangKyActivity.this, DangNhapActivity.class);
-                        startActivity(intent);
+        if(MaSV.length()<6){
+            Toast.makeText(this, "Mã sinh viên phải > 6 ký tự", Toast.LENGTH_SHORT).show();
+        }else{
+            if (Matkhau.equals("")||Xacnhan.equals("")){
+                Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                if(Matkhau.equals(Xacnhan)){
+                    Boolean checkMaSV = db.CheckMaSV(MaSV);
+                    if (checkMaSV == true){
+                        Boolean insert = db.insertTK(MaSV,Matkhau);
+                        if (insert == true){
+                            Toast.makeText(getApplicationContext(), "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(DangKyActivity.this, DangNhapActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Mã sinh viên đã tồn tại!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "Mã sinh viên đã tồn tại!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
                 }
             }
-            else {
-                Toast.makeText(getApplicationContext(), "Mật khẩu không trùng khớp!", Toast.LENGTH_SHORT).show();
-            }
         }
+
     }
 }

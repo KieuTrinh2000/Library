@@ -18,7 +18,7 @@ import com.trinh.library.Config.ShareConFig;
 public class DangNhapActivity extends AppCompatActivity {
 
     EditText etTenDN, etMatkhau;
-    TextView tvDangnhap;
+    TextView tvDangnhap,tvQuenMK;
     Button btnDangky, btnDangnhap;
     ImageView imgAccount;
     private DatabaseHelper db;
@@ -48,6 +48,15 @@ public class DangNhapActivity extends AppCompatActivity {
                Login();
             }
         });
+
+        tvQuenMK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DangNhapActivity.this, QuenMatKhauActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
         private void getViews(){
@@ -56,12 +65,14 @@ public class DangNhapActivity extends AppCompatActivity {
             tvDangnhap = (TextView) findViewById(R.id.tvDangnhap);
             btnDangky = (Button) findViewById(R.id.btnDangky);
             btnDangnhap = (Button) findViewById(R.id.btnDangnhap);
+            tvQuenMK = (TextView) findViewById(R.id.tvQuenMK);
             imgAccount = (ImageView) findViewById(R.id.imgAccount);
         }
 
     private void Login() {
         String MaSV = etTenDN.getText().toString();
         String Matkhau = etMatkhau.getText().toString();
+
         if (MaSV.equals("") || Matkhau.equals("")) {
             Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
         } else {
