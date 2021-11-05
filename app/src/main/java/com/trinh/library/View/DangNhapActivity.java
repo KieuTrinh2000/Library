@@ -72,11 +72,10 @@ public class DangNhapActivity extends AppCompatActivity {
     private void Login() {
         String MaSV = etTenDN.getText().toString();
         String Matkhau = etMatkhau.getText().toString();
+        if(MaSV.length()>0){
 
-        if (MaSV.equals("") || Matkhau.equals("")) {
-            Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
-        } else {
-            Boolean check = db.checkLogin(MaSV, Matkhau);
+            if(Matkhau.length()>0){
+                Boolean check = db.checkLogin(MaSV, Matkhau);
             if (check == true) {
                 shareConFig.PutTaiKhoan(MaSV);// khi đăng bnhaapj thành công sẽ lưu thông tin tài khoản
                 Toast.makeText(getApplicationContext(), "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
@@ -86,7 +85,32 @@ public class DangNhapActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "Kiểm tra lại mã sinh viên hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
             }
+
+            }else{
+                etMatkhau.setError("mat khau khong de trong");
+            }
+        }else{
+            etTenDN.setError("Ma sinh vien khong de trong");
         }
+
+//        if (MaSV.equals("") || Matkhau.equals("")) {
+//            Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+//        }
+//
+//
+//
+//        else {
+//            Boolean check = db.checkLogin(MaSV, Matkhau);
+//            if (check == true) {
+//                shareConFig.PutTaiKhoan(MaSV);// khi đăng bnhaapj thành công sẽ lưu thông tin tài khoản
+//                Toast.makeText(getApplicationContext(), "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(DangNhapActivity.this, HomeActivity.class);
+//                intent.putExtra(etAddMasv, MaSV);
+//                startActivity(intent);
+//            } else {
+//                Toast.makeText(getApplicationContext(), "Kiểm tra lại mã sinh viên hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 }
 

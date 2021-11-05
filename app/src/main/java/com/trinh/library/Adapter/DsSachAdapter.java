@@ -49,6 +49,7 @@ public class DsSachAdapter extends BaseAdapter {
             viewHolder.txtTen=convertView.findViewById(R.id.txtTenS);
             viewHolder.imgEdit=convertView.findViewById(R.id.imgEdit);
             viewHolder.imgDel=convertView.findViewById(R.id.imgDel);
+            viewHolder.txtsl=convertView.findViewById(R.id.txtsl);
             convertView.setTag(viewHolder);
 
         }
@@ -58,6 +59,7 @@ public class DsSachAdapter extends BaseAdapter {
         //lay ra doi tuong contact tai vi tri position trong lsContact
         viewHolder.txtTen.setText(listSach.get(position).getTenS());
         viewHolder.txtMa.setText(listSach.get(position).getMaS());
+        viewHolder.txtsl.setText(listSach.get(position).getSl()+"");
 
         viewHolder.imgDel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +80,7 @@ public class DsSachAdapter extends BaseAdapter {
     }
 
     public class ViewHolder{
-        TextView txtMa,txtTen;
+        TextView txtMa,txtTen,txtsl;
         ImageView imgEdit,imgDel;
     }
 

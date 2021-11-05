@@ -13,11 +13,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,9 @@ import com.trinh.library.Model.SachModel;
 import com.trinh.library.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class DSSachActivity extends AppCompatActivity {
   Toolbar toolbar;
@@ -54,6 +59,55 @@ public class DSSachActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Spinner spinner =findViewById(R.id.btnsapxep);
+        String[] s = {"Chon","Tang Dan","Giam Dan","Tro ve"};
+        ArrayAdapter arrayAdapter =new ArrayAdapter(this, android.R.layout.simple_list_item_1,s);
+        spinner.setAdapter(arrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position>0){
+                    switch (position){
+                        case  1 :
+                            list=db.getDataListSach();
+                            Comparator<SachModel> comparator = new Comparator<SachModel>() {
+                                @Override
+                                public int compare(SachModel o1, SachModel o2) {
+                                    return o1.getSl() - o2.getSl();
+                                }
+                            };
+
+
+                adapter=new DsSachAdapter(DSSachActivity.this,list);
+                lv.setAdapter(adapter);
+                Collections.sort(list,comparator);break;
+                        case  2 :
+                            list=db.getDataListSach();
+                            Comparator<SachModel> comparator1 = new Comparator<SachModel>() {
+                                @Override
+                                public int compare(SachModel o1, SachModel o2) {
+                                    return o2.getSl() - o1.getSl();
+                                }
+                            };
+                            adapter=new DsSachAdapter(DSSachActivity.this,list);
+                            lv.setAdapter(adapter);
+                            Collections.sort(list,comparator1);break;
+                        case  3:
+                            list=db.getDataListSach();
+                            adapter=new DsSachAdapter(DSSachActivity.this,list);
+                            lv.setAdapter(adapter);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         db=new DatabaseHelper(this);
         db.CreateTableDsSach();
@@ -69,9 +123,31 @@ public class DSSachActivity extends AppCompatActivity {
         //b3 : khoi tao va do du lieu ra lv
         db=new DatabaseHelper(DSSachActivity.this);
         list=db.getDataListSach();
+//        Comparator<SachModel> comparator = new Comparator<SachModel>() {
+//            @Override
+//            public int compare(SachModel o1, SachModel o2) {
+//                return o1.getSl() - o2.getSl();
+//            }
+//        };
+//        Collections.sort(list,comparator);
         adapter=new DsSachAdapter(DSSachActivity.this,list);
         lv.setAdapter(adapter);
-
+//        findViewById(R.id.btnsapxep).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                list=db.getDataListSach();
+//                Comparator<SachModel> comparator = new Comparator<SachModel>() {
+//                    @Override
+//                    public int compare(SachModel o1, SachModel o2) {
+//                        return o1.getSl() - o2.getSl();
+//                    }
+//                };
+//                adapter=new DsSachAdapter(DSSachActivity.this,list);
+//                lv.setAdapter(adapter);
+//                Collections.sort(list,comparator);
+//
+//            }
+//        });
 //        //Chi tiết sách
 //        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override

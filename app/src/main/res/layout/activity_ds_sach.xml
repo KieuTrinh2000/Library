@@ -12,6 +12,13 @@
         android:layout_height="wrap_content">
 
     </androidx.appcompat.widget.Toolbar>
+    <Spinner
+
+        android:text="Sap xep"
+        android:id="@+id/btnsapxep"
+        android:layout_width="250dp"
+        android:layout_gravity="end"
+        android:layout_height="50dp"/>
 
 
     <ListView
